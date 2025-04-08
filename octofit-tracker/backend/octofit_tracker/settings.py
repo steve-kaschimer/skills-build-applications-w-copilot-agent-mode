@@ -6,7 +6,11 @@ SECRET_KEY = 'your-secret-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'psychic-space-xylophone-694pxpwpw65xcr7v4.app.github.dev'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
