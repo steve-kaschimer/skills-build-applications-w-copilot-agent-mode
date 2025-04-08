@@ -10,7 +10,7 @@ from rest_framework.reverse import reverse
 
 @api_view(['GET'])
 def api_root(request, format=None):
-    base_url = 'https://psychic-space-xylophone-694pxpwpw65xcr7v4.app.github.dev/'
+    base_url = request.build_absolute_uri('/')
     return Response({
         'users': base_url + 'api/users/?format=api',
         'teams': base_url + 'api/teams/?format=api',
