@@ -1,9 +1,10 @@
 from django.test import TestCase
-from .models import User, Team, Activity, Leaderboard, Workout
+from .models import Team, Activity, Leaderboard, Workout
+from octofit_tracker.models import User as OctofitUser
 
 class UserModelTest(TestCase):
     def test_create_user(self):
-        user = User.objects.create(email="test@example.com", name="Test User")
+        user = OctofitUser.objects.create(email="test@example.com", name="Test User")
         self.assertEqual(user.email, "test@example.com")
 
 class TeamModelTest(TestCase):
@@ -18,13 +19,13 @@ class ActivityModelTest(TestCase):
 
 class LeaderboardModelTest(TestCase):
     def test_create_leaderboard_entry(self):
-        user = User.objects.create(email="leader@example.com", name="Leader User")
+        user = OctofitUser.objects.create(email="leader@example.com", name="Leader User")
         leaderboard = Leaderboard.objects.create(user=user, total_points=100)
         self.assertEqual(leaderboard.total_points, 100)
 
 class WorkoutModelTest(TestCase):
     def test_create_workout(self):
-        user = User.objects.create(email="workout@example.com", name="Workout User")
+        user = OctofitUser.objects.create(email="workout@example.com", name="Workout User")
         activity = Activity.objects.create(name="Cycling", points=20)
         workout = Workout.objects.create(user=user, activity=activity, duration=60)
         self.assertEqual(workout.duration, 60)
